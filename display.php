@@ -51,11 +51,10 @@ $result = $conn->query($sql);
                 echo "<td>" . $row["name"] . "</td>";
                 echo "<td>" . $row["role"] . "</td>"; 
                 // Updated part below:
-                echo "<td>
-                        <a href='update.php?matric=" . $row["matric"] . "'>Update</a> |
-                        <a href='delete.php?matric=" . $row["matric"] . "'>Delete</a>
-                      </td>";
-                echo "</tr>";
+              echo "<td>
+                    <a href='update.php?matric=" . $row["matric"] . "'>Update</a> |
+                    <a href='delete.php?matric=" . $row["matric"] . "' onclick=\"return confirm('Are you sure you want to delete this user?');\">Delete</a>
+                     </td>";
             }
         } else {
             echo "<tr><td colspan='4'>No users found</td></tr>";
