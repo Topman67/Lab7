@@ -17,7 +17,7 @@ if (isset($_POST['update'])) {
     $sql = "UPDATE users SET name='$name', role='$role' WHERE matric='$matric'";
 
     if ($conn->query($sql) === TRUE) {
-        header("Location: display.php");
+        header("Location: user.php");
         exit();
     } else {
         echo "Error updating record: " . $conn->error;
@@ -63,7 +63,7 @@ if (isset($_GET['matric'])) {
         </select><br><br>
 
         <input type="submit" name="update" value="Update">
-        <a href="display.php">Cancel</a>
+        <a href="user.php">Cancel</a>
     </form>
 </body>
 </html>

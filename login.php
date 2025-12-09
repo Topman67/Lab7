@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
             $_SESSION['role'] = $row['role'];
             
             // Redirect to display page
-            header("Location: display.php");
+            header("Location: user.php");
             exit();
         } else {
             $error = "Invalid username or password, try login again.";

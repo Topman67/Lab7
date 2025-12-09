@@ -15,7 +15,7 @@ if (isset($_GET['matric'])) {
     $sql = "DELETE FROM users WHERE matric='$matric'";
 
     if ($conn->query($sql) === TRUE) {
-        header("Location: display.php");
+        header("Location: user.php");
         exit();
     } else {
         echo "Error deleting record: " . $conn->error;
