@@ -5,16 +5,27 @@ include 'db.php';
 if (isset($_POST['submit'])) {
     $matric = $_POST['matric'];
     $name = $_POST['name'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Encrypt password for security
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $role = $_POST['role'];
 
-    // SQL Insert Query
-    $sql = "INSERT INTO users (matric, name, password, role) VALUES ('$matric', '$name', '$password', '$role')";
+    // 1. CHECK FOR DUPLICATES
+    // We select any user who already has this matric number
+    $checkQuery = "SELECT * FROM users WHERE matric='$matric'";
+    $result = $conn->query($checkQuery);
 
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+    if ($result->num_rows > 0) {
+        // 2. IF DUPLICATE FOUND: Show Popup
+        echo "<script>alert('Error: The Matric number $matric is already registered!');</script>";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        // 3. IF NO DUPLICATE: Proceed with Registration
+        $sql = "INSERT INTO users (matric, name, password, role) VALUES ('$matric', '$name', '$password', '$role')";
+
+        if ($conn->query($sql) === TRUE) {
+            // Success Popup
+            echo "<script>alert('New record created successfully!'); window.location.href='login.php';</script>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
 }
 ?>
