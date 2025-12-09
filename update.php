@@ -45,25 +45,31 @@ if (isset($_GET['matric'])) {
 <html>
 <head>
     <title>Update User</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Update User</h2>
-    <form action="update.php" method="post">
-        <label for="matric">Matric:</label>
-        <input type="text" name="matric" value="<?php echo $matric; ?>" readonly><br><br>
+    <div class="wrapper">
+        <h2>Update User</h2>
+        <form action="update.php" method="post">
+            <label for="matric">Matric:</label>
+            <input type="text" name="matric" value="<?php echo $matric; ?>" readonly>
 
-        <label for="name">Name:</label>
-        <input type="text" name="name" value="<?php echo $name; ?>" required><br><br>
+            <label for="name">Name:</label>
+            <input type="text" name="name" value="<?php echo $name; ?>" required>
 
-        <label for="role">Access Level:</label>
-        <select name="role" id="role" required>
-            <option value="">Please select</option>
-            <option value="student" <?php if ($role == 'student') echo 'selected'; ?>>Student</option>
-            <option value="lecturer" <?php if ($role == 'lecturer') echo 'selected'; ?>>Lecturer</option>
-        </select><br><br>
+            <label for="role">Access Level:</label>
+            <select name="role" id="role" required>
+                <option value="">Please select</option>
+                <option value="student" <?php if ($role == 'student') echo 'selected'; ?>>Student</option>
+                <option value="lecturer" <?php if ($role == 'lecturer') echo 'selected'; ?>>Lecturer</option>
+            </select>
 
-        <input type="submit" name="update" value="Update">
-        <a href="user.php">Cancel</a>
-    </form>
+            <input type="submit" name="update" value="Update">
+            
+            <p style="margin-top: 15px;">
+                <a href="user.php">Cancel</a>
+            </p>
+        </form>
+    </div>
 </body>
 </html>

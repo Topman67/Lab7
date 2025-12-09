@@ -35,21 +35,24 @@ if (isset($_POST['login'])) {
 <html>
 <head>
     <title>Lab 7: Login</title>
+    <link rel="stylesheet" href="style.css"> </head>
 </head>
 <body>
-    <h2>Login Page</h2>
-    <form action="login.php" method="post">
-        <label for="matric">Matric:</label>
-        <input type="text" name="matric" id="matric" required><br><br>
+   <div class="wrapper"> <h2>Login Page</h2>
+        <form action="login.php" method="post">
+            <label for="matric">Matric:</label>
+            <input type="text" name="matric" id="matric" required>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
 
-        <input type="submit" name="login" value="Login">
-    </form>
-    
-    <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
+            <input type="submit" name="login" value="Login">
+        </form>
+        
+        <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
 
-    <p><a href="register.php">Register</a> here if you have not.</p>
-</body>
+        <p style="margin-top: 20px;">
+            <a href="register.php">Register</a> here if you have not.
+        </p>
+    </div> </body>
 </html>

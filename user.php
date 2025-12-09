@@ -18,54 +18,42 @@ $result = $conn->query($sql);
 <html>
 <head>
     <title>Users List</title>
-    <style>
-        /* Basic styling to match the table borders in the lab example */
-        table {
-            border-collapse: collapse;
-            width: 80%;
-            margin: 20px auto;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2 style="text-align:center;">User List</h2>
-    
-    <div style="text-align: right; margin-right: 20px; margin-top: 10px;">
-        <a href="logout.php">Logout</a>
-    </div>
-
-<table>
-        <tr>
-            <th>Matric</th>
-            <th>Name</th>
-            <th>Level</th>
-            <th>Action</th> </tr>
-        <?php
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row["matric"] . "</td>";
-                echo "<td>" . $row["name"] . "</td>";
-                echo "<td>" . $row["role"] . "</td>"; 
-                // Updated part below:
-              echo "<td>
-                    <a href='update.php?matric=" . $row["matric"] . "'>Update</a> |
-                    <a href='delete.php?matric=" . $row["matric"] . "' onclick=\"return confirm('Are you sure you want to delete this user?');\">Delete</a>
-                     </td>";
+    <div class="wrapper">
+        <div class="top-nav">
+            <a href="logout.php" class="logout-btn">Logout</a>
+        </div>
+        
+        <h2>User List</h2>
+        
+        <table>
+            <tr>
+                <th>Matric</th>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Action</th>
+            </tr>
+            <?php
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row["matric"] . "</td>";
+                    echo "<td>" . $row["name"] . "</td>";
+                    echo "<td>" . $row["role"] . "</td>"; 
+                    echo "<td>
+                            <a href='update.php?matric=" . $row["matric"] . "'>Update</a> |
+                            <a href='delete.php?matric=" . $row["matric"] . "' onclick=\"return confirm('Are you sure you want to delete this user?');\">Delete</a>
+                          </td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='4'>No users found</td></tr>";
             }
-        } else {
-            echo "<tr><td colspan='4'>No users found</td></tr>";
-        }
-        $conn->close();
-        ?>
-    </table>
+            $conn->close();
+            ?>
+        </table>
+    </div>
 </body>
 </html>
