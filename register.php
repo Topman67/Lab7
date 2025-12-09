@@ -45,5 +45,11 @@ if (isset($_POST['submit'])) {
 
         <input type="submit" name="submit" value="Submit">
     </form>
+    <input type="submit" name="submit" value="Submit">
+    </form>
+    
+    <p>Already have an account? <a href="login.php">Login here</a></p>
+</body>
+</html>
 </body>
 </html>

@@ -37,6 +37,11 @@ $result = $conn->query($sql);
 </head>
 <body>
     <h2 style="text-align:center;">User List</h2>
+    
+    <div style="text-align: right; margin-right: 20px; margin-top: 10px;">
+        <a href="logout.php">Logout</a>
+    </div>
+
 <table>
         <tr>
             <th>Matric</th>
