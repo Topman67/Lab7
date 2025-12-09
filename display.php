@@ -37,24 +37,28 @@ $result = $conn->query($sql);
 </head>
 <body>
     <h2 style="text-align:center;">User List</h2>
-    <table>
+<table>
         <tr>
             <th>Matric</th>
             <th>Name</th>
             <th>Level</th>
-        </tr>
+            <th>Action</th> </tr>
         <?php
         if ($result->num_rows > 0) {
-            // Output data of each row
             while($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td>" . $row["matric"] . "</td>";
                 echo "<td>" . $row["name"] . "</td>";
                 echo "<td>" . $row["role"] . "</td>"; 
+                // Updated part below:
+                echo "<td>
+                        <a href='update.php?matric=" . $row["matric"] . "'>Update</a> |
+                        <a href='delete.php?matric=" . $row["matric"] . "'>Delete</a>
+                      </td>";
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='3'>No users found</td></tr>";
+            echo "<tr><td colspan='4'>No users found</td></tr>";
         }
         $conn->close();
         ?>
